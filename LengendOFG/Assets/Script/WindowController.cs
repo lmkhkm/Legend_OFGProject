@@ -7,17 +7,6 @@ public class WindowController : MonoBehaviour
 
     public GameObject window;
     public GameObject previousWindow;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void WinodwShow(GameObject setwinodw)
     {

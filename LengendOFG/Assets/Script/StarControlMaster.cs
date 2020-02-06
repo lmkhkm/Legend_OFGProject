@@ -11,13 +11,19 @@ public class StarControlMaster : MonoBehaviour
 
     public string myStarName;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         myStarName = gameObject.name;
         eventSystem = GameObject.Find("EventSystem");
         mousepos = eventSystem.GetComponent<MouseController>();
         starUIcanvas = GameObject.Find("StarUICanvas").GetComponent<Canvas>();
         starUIscript = GameObject.Find("StarUICanvas").GetComponent<StarUIControlMaster>();
+    }
+    void Start()
+    {
+        starUIscript.starSystemUICanvas.gameObject.SetActive(false);
+        starUIcanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

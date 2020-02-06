@@ -9,9 +9,10 @@ public class StarUIControlMaster : MonoBehaviour
     public StarControlMaster starControlMaster;
     public Canvas mainUICanvas;
     public Canvas starSystemUICanvas;
-    void Start()
+
+    private void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,12 +25,13 @@ public class StarUIControlMaster : MonoBehaviour
     {
         camera.transform.position = new Vector3(0f, -10f, -10f);
         starSystemUICanvas.gameObject.SetActive(true);
-
+        Debug.Log("View Star System");
     }
 
     public void ExitStarSystem()
     {
         camera.transform.position = new Vector3(0f, 0f, -10f);
         starSystemUICanvas.gameObject.SetActive(false);
+        Debug.Log("Exit Star System");
     }
 }

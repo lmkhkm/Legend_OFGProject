@@ -7,15 +7,23 @@ public class PlanetControlMaster : MonoBehaviour
     private GameObject eventSystem;
     private MouseController mousepos;
     private Canvas planetUIcanvas;
+    private Camera mainCamera;
 
     public string myPlanetName;
     // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         myPlanetName = gameObject.name;
         eventSystem = GameObject.Find("EventSystem");
         mousepos = eventSystem.GetComponent<MouseController>();
         planetUIcanvas = GameObject.Find("PlanetUICanvas").GetComponent<Canvas>();
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+    }
+
+    void Start()
+    {
+        planetUIcanvas.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,20 +66,14 @@ public class PlanetControlMaster : MonoBehaviour
     public void PlanetUIShow()
     {
         Vector3 myplanetPosition = new Vector3(gameObject.transform.position.x + 1.9f, gameObject.transform.position.y - 1.18f, gameObject.transform.position.z);
-        if (planetUIcanvas.transform.position == myplanetPosition)
+
+        if (planetUIcanvas.gameObject.activeSelf)
         {
-            if (planetUIcanvas.gameObject.activeSelf)
-            {
-                planetUIcanvas.gameObject.SetActive(false);
-            }
-            else
-            {
-                planetUIcanvas.gameObject.SetActive(true);
-            }
+            planetUIcanvas.gameObject.SetActive(false);
         }
         else
         {
-            planetUIcanvas.transform.position = myplanetPosition;
+            planetUIcanvas.gameObject.transform.position = new Vector3( mainCamera.gameObject.transform.position.x, mainCamera.gameObject.transform.position.y,0);
             planetUIcanvas.gameObject.SetActive(true);
         }
     }
