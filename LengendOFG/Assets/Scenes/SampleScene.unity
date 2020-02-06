@@ -3692,6 +3692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   window: {fileID: 1222943865}
   previousWindow: {fileID: 1222943865}
+  isStarSystem: 0
 --- !u!114 &1696163995
 MonoBehaviour:
   m_ObjectHideFlags: 0

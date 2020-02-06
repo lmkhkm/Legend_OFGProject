@@ -9,6 +9,13 @@ public class StarUIControlMaster : MonoBehaviour
     public StarControlMaster starControlMaster;
     public Canvas mainUICanvas;
     public Canvas starSystemUICanvas;
+    
+    private WindowController windowController;
+
+    private void Awake()
+    {
+        windowController = GameObject.Find("EventSystem").GetComponent<WindowController>();
+    }
 
     private void Start()
     {
@@ -25,6 +32,7 @@ public class StarUIControlMaster : MonoBehaviour
     {
         camera.transform.position = new Vector3(0f, -10f, -10f);
         starSystemUICanvas.gameObject.SetActive(true);
+        windowController.isStarSystem = true;
         Debug.Log("View Star System");
     }
 
@@ -32,6 +40,7 @@ public class StarUIControlMaster : MonoBehaviour
     {
         camera.transform.position = new Vector3(0f, 0f, -10f);
         starSystemUICanvas.gameObject.SetActive(false);
+        windowController.isStarSystem = false;
         Debug.Log("Exit Star System");
     }
 }

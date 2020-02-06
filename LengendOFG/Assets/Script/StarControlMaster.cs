@@ -32,7 +32,7 @@ public class StarControlMaster : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             StarIsClick();
-            if (mousepos.ClickObject() == transform.gameObject)
+            if (mousepos.ClickObject() == transform.gameObject && !eventSystem.GetComponent<WindowController>().isStarSystem)
             {
                 StarUIShow();
                 starUIscript.starControlMaster = this;

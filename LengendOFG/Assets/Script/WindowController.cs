@@ -7,6 +7,7 @@ public class WindowController : MonoBehaviour
 
     public GameObject window;
     public GameObject previousWindow;
+    public bool isStarSystem;
 
     public void WinodwShow(GameObject setwinodw)
     {
