@@ -1,17 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 public class WindowController : MonoBehaviour
 {
-
+    public GameObject nullWindow;
     public GameObject window;
     public GameObject previousWindow;
     public bool isStarSystem;
+    public MouseController mouseController;
 
-    public void WinodwShow(GameObject setwinodw)
+    private void Update()
     {
-        window = setwinodw;
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (EventSystem.current.IsPointerOverGameObject() == false)
+            {
+                
+                WinodwShow(nullWindow);
+            }
+
+        }
+    }
+
+    public void WinodwShow(GameObject setwindow)
+    {
+        if (mouseController.ClickObject() == mouseController.camera)
+        {
+            previousWindow.gameObject.SetActive(false);
+            previousWindow = setwindow;
+            return;
+        }
+        window = setwindow;
         if (!window.activeSelf)
             window.SetActive(true);
         else
