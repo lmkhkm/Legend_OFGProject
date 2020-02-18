@@ -8,11 +8,11 @@ public class TimeControllerMaster : MonoBehaviour
 
     public float totalPlayTime;
     public float timer;
+    public short hour;
     public short day;
     public short month;
     public short year;
     public short gameSpeed;
-
 
     public Text timerText;
     public Text GameSpeedText;
@@ -34,33 +34,38 @@ public class TimeControllerMaster : MonoBehaviour
         switch(gameSpeed)
         {
             case 1:
-                if (timer > 4)
+                if (timer > 4f/24f)
                 {
-                    timer -= 4;
-                    day++;
+                    timer -= 4f/24f;
+                    hour++;
                 };
                 break;
             case 2:
-                if (timer > 2)
+                if (timer > 2f/24f)
                 {
-                    timer -= 2;
-                    day++;
+                    timer -= 2f/24f;
+                    hour++;
                 };
                 break;
             case 3:
-                if (timer > 1)
+                if (timer > 1f/24f)
                 {
-                    timer -= 1;
-                    day++;
+                    timer -= 1f / 24f;
+                    hour++;
                 };
                 break;
             case 4:
-                if (timer > 0.5f)
+                if (timer > 0.5f/24f)
                 {
-                    timer -= 0.5f;
-                    day++;
+                    timer -= 0.5f / 24f;
+                    hour++;
                 };
                 break;
+        }
+        if (hour>24)
+        {
+            hour -= 24;
+            day++;
         }
         if (day>=31)
         {
@@ -72,7 +77,7 @@ public class TimeControllerMaster : MonoBehaviour
             month -= 12;
             year++;
         }
-        timerText.text = timer + "\n" + year + "." + month + "." + day;
+        timerText.text = timer.ToString("F4") + "\n" + year + "." + month + "." + day;
     }
 
     public void GameSpeedUp()
