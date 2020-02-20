@@ -9,8 +9,13 @@ public class StarUIControlMaster : MonoBehaviour
     public StarControlMaster starControlMaster;
     public Canvas mainUICanvas;
     public Canvas starSystemUICanvas;
+
+    public string currentStarName;
+    public short currentStarNumber;
     
     private WindowController windowController;
+    private short maxPlanetNumber = 200;
+
 
     private void Awake()
     {
@@ -30,12 +35,18 @@ public class StarUIControlMaster : MonoBehaviour
 
     public void ViewStarSystem()
     {
-        camera.transform.position = new Vector3(0f, -10f, -10f);
+        for (int i=1;i< maxPlanetNumber+1; i++)
+        {
+            if (i == currentStarNumber)
+            {
+                camera.transform.position = new Vector3(0f, 10f * (-1f) * i,-10f);
+                break;
+            }
+        }
         starSystemUICanvas.gameObject.SetActive(true);
         windowController.isStarSystem = true;
         Debug.Log("View Star System");
     }
-
     public void ExitStarSystem()
     {
         camera.transform.position = new Vector3(0f, 0f, -10f);

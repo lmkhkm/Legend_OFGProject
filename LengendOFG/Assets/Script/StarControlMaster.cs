@@ -10,6 +10,7 @@ public class StarControlMaster : MonoBehaviour
     private StarUIControlMaster starUIscript;
 
     public string myStarName;
+    public short myStarNumber;
     // Start is called before the first frame update
 
     private void Awake()
@@ -76,12 +77,16 @@ public class StarControlMaster : MonoBehaviour
             else
             {
                 starUIcanvas.gameObject.SetActive(true);
+                starUIscript.currentStarName = myStarName;
+                starUIscript.currentStarNumber = myStarNumber;
             }
         }
         else
         {
             starUIcanvas.transform.position = mystarPosition;
             starUIcanvas.gameObject.SetActive(true);
+            starUIscript.currentStarName = myStarName;
+            starUIscript.currentStarNumber = myStarNumber;
         }
     }
 }
