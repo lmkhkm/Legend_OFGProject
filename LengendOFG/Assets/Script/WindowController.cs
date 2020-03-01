@@ -16,7 +16,7 @@ public class WindowController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (EventSystem.current.IsPointerOverGameObject() == false)
+            if (EventSystem.current.IsPointerOverGameObject() == false)//UI를 클릭했을 때는 발동하지 않도록함
             {
                 
                 WinodwShow(nullWindow);

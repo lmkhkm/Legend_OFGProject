@@ -13,9 +13,11 @@ public class TimeControllerMaster : MonoBehaviour
     public short month;
     public short year;
     public short gameSpeed;
+    public bool isGamePause;
 
     public Text timerText;
     public Text GameSpeedText;
+
 
     private void Start()
     {
@@ -23,6 +25,7 @@ public class TimeControllerMaster : MonoBehaviour
         timer = 0;
         gameSpeed = 1;
         GameSpeedText.text = ">";
+        isGamePause = false;
 
     }
     // Start is called before the first frame update
@@ -30,7 +33,10 @@ public class TimeControllerMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        if (!isGamePause)
+        {
+            timer += Time.deltaTime;
+        }
         switch(gameSpeed)
         {
             case 1:
@@ -127,6 +133,18 @@ public class TimeControllerMaster : MonoBehaviour
             case 4:
                 GameSpeedText.text = ">>>>";
                 break;
+        }
+    }
+
+    public void GamePause()
+    {
+        if(isGamePause == true)
+        {
+            isGamePause = false;
+        }
+        else
+        {
+            isGamePause = true;
         }
     }
 }
