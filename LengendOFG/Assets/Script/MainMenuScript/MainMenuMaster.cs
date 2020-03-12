@@ -9,17 +9,24 @@ public class MainMenuMaster : MonoBehaviour
     public GameObject newGame;
     public GameObject loadGame;
     public GameObject setting;
+    public GameObject backButton;
     
 
     public void ChangeMainMenuWindow(GameObject mainMenuWindow)
     {
         mainMenuWindow.SetActive(true);
+        backButton.SetActive(true);
+
         mainMenu.SetActive(false);
     }
 
-    public void GoMainMenuWindow(GameObject mainMenuWindow)
+    public void GoMainMenuWindow()
     {
-        mainMenuWindow.SetActive(false);
+        newGame.SetActive(false);
+        loadGame.SetActive(false);
+        setting.SetActive(false);
+        backButton.SetActive(false);
+
         mainMenu.SetActive(true);
     }
 
